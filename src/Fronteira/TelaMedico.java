@@ -55,12 +55,12 @@ public class TelaMedico extends JPanel {
 		
 		JLabel lblNewLabel_2 = new JLabel(nomeMedico);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(65, 22, 79, 19);
+		lblNewLabel_2.setBounds(65, 22, 110, 19);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel(BancoDeDados.getCRM(LoginDados.getId()));
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_2_1.setBounds(65, 53, 79, 19);
+		lblNewLabel_2_1.setBounds(65, 53, 110, 19);
 		panel.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_2_2 = new JLabel(String.valueOf(LoginDados.getId()));

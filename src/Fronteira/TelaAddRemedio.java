@@ -42,7 +42,7 @@ public class TelaAddRemedio extends JPanel {
 		tfNome.setColumns(10);
 
 		JLabel lblNotif = new JLabel("");
-		lblNotif.setBounds(34, 215, 149, 14);
+		lblNotif.setBounds(34, 215, 161, 14);
 		add(lblNotif);
 
 		JLabel lblNewLabel_2 = new JLabel("Quantidade:");
@@ -76,7 +76,7 @@ public class TelaAddRemedio extends JPanel {
 					lblNotif.setText("ID já existente.");
 				}
 			} else {
-				lblNotif.setText("Preencha todos os campos.");
+				lblNotif.setText("Preencha os campos.");
 			}
 			
 		});

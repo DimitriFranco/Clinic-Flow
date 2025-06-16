@@ -22,7 +22,7 @@ public class TelaRemoveRemedio extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Remover Registro de Medicamento");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel.setBounds(20, 11, 278, 33);
+		lblNewLabel.setBounds(20, 11, 332, 33);
 		add(lblNewLabel);
 
 		tfID = new JTextField();
@@ -72,31 +72,36 @@ public class TelaRemoveRemedio extends JPanel {
 		tfSenhaGerente.setColumns(10);
 		
 		JLabel lblNotRemove = new JLabel("");
-		lblNotRemove.setBounds(50, 200, 120, 14);
+		lblNotRemove.setBounds(50, 200, 150, 14);
 		add(lblNotRemove);
 
-		JButton btnExcluir = new JButton("Excluir Login");
+		JButton btnExcluir = new JButton("Excluir Registro");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnExcluir.setBounds(210, 190, 110, 29);
+		btnExcluir.setBounds(199, 190, 121, 29);
 		btnExcluir.addActionListener(e -> {
-			int id = Integer.parseInt(tfID.getText());
-			if (BancoDeDados.verifySenhaG(LoginDados.getId(), tfSenhaGerente.getText())) {
-				if (!tfID.getText().isEmpty()) {
-					if (BancoDeDados.verifyIDRemedio(id)) {
-						BancoDeDados.removeRemedioDB(id);
-						tfID.setText("");
-						tfSenhaGerente.setText("");
-						lblNotRemove.setText("Registro Excluído.");
+			if(!tfID.getText().isEmpty() && !tfSenhaGerente.getText().isEmpty()) {
+				int id = Integer.parseInt(tfID.getText());
+				if (BancoDeDados.verifySenhaG(LoginDados.getId(), tfSenhaGerente.getText())) {
+					if (!tfID.getText().isEmpty()) {
+						if (BancoDeDados.verifyIDRemedio(id)) {
+							BancoDeDados.removeRemedioDB(id);
+							tfID.setText("");
+							tfSenhaGerente.setText("");
+							lblNotRemove.setText("Registro Excluído.");
+						} else {
+							lblNotRemove.setText("Medicamento não encontrado.");
+						}
 					} else {
-						lblNotRemove.setText("Medicamento não encontrado.");
+						lblNotRemove.setText("Preencha o campo ID");
 					}
-				} else {
-					lblNotRemove.setText("Preencha o campo ID");
-				}
 
+				} else {
+					lblNotRemove.setText("Senha incorreta.");
+				}
 			} else {
-				lblNotRemove.setText("Senha incorreta.");
+				lblNotRemove.setText("Preencha os campos");
 			}
+			
 		});
 		add(btnExcluir);
 

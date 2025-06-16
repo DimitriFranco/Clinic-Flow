@@ -29,7 +29,7 @@ public class TelaReceita extends JPanel {
 		lblNewLabel.setBounds(32, 23, 123, 31);
 		add(lblNewLabel);
 		
-		JLabel lblNotif = new JLabel("lorem ipsum lorem ipsum");
+		JLabel lblNotif = new JLabel("");
 		lblNotif.setBounds(36, 240, 165, 16);
 		add(lblNotif);
 

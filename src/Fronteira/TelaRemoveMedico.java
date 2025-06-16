@@ -70,33 +70,38 @@ public class TelaRemoveMedico extends JPanel {
 		tfSenhaGerente.setBounds(40, 165, 208, 20);
 		add(tfSenhaGerente);
 		tfSenhaGerente.setColumns(10);
-		
+
 		JLabel lblNotRemove = new JLabel("");
-		lblNotRemove.setBounds(50, 200, 120, 14);
+		lblNotRemove.setBounds(50, 200, 155, 14);
 		add(lblNotRemove);
 
 		JButton btnExcluir = new JButton("Excluir Login");
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnExcluir.setBounds(210, 190, 110, 29);
 		btnExcluir.addActionListener(e -> {
-			int id = Integer.parseInt(tfID.getText());
-			if (BancoDeDados.verifySenhaG(LoginDados.getId(), tfSenhaGerente.getText())) {
-				if (!tfID.getText().isEmpty()) {
-					if (BancoDeDados.verifyIDM(id)) {
-						BancoDeDados.removeMedicoDB(id);
-						tfID.setText("");
-						tfSenhaGerente.setText("");
-						lblNotRemove.setText("Cadastro Excluído.");
+			if (!tfID.getText().isEmpty() && !tfSenhaGerente.getText().isEmpty()) {
+				int id = Integer.parseInt(tfID.getText());
+				if (BancoDeDados.verifySenhaG(LoginDados.getId(), tfSenhaGerente.getText())) {
+					if (!tfID.getText().isEmpty()) {
+						if (BancoDeDados.verifyIDM(id)) {
+							BancoDeDados.removeMedicoDB(id);
+							tfID.setText("");
+							tfSenhaGerente.setText("");
+							lblNotRemove.setText("Cadastro Excluído.");
+						} else {
+							lblNotRemove.setText("ID não encontrado.");
+						}
 					} else {
-						lblNotRemove.setText("ID não encontrado.");
+						lblNotRemove.setText("Preencha o campo ID");
 					}
-				} else {
-					lblNotRemove.setText("Preencha o campo ID");
-				}
 
+				} else {
+					lblNotRemove.setText("Senha incorreta.");
+				}
 			} else {
-				lblNotRemove.setText("Senha incorreta.");
+				lblNotRemove.setText("Preencha os campos");
 			}
+
 		});
 		add(btnExcluir);
 
@@ -119,8 +124,6 @@ public class TelaRemoveMedico extends JPanel {
 		panel_1.setBackground(new Color(213, 213, 213));
 		panel_1.setBounds(30, 135, 301, 89);
 		add(panel_1);
-		
-		
 
 	}
 }
